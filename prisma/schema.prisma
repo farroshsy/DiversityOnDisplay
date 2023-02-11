@@ -1,0 +1,62 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Daerah {
+  id     String   @id @default(uuid())
+  nama   String
+  Kota   Kota[]
+  Bahasa Bahasa[]
+}
+
+model Kota {
+  id       String @id @default(uuid())
+  nama     String
+  idDaerah String
+  daerah   Daerah @relation(fields: [idDaerah], references: [id])
+}
+
+model TipeBahasa {
+  id              Int               @id @default(autoincrement())
+  tipe            String
+  Bahasa          Bahasa[]
+  BahasaIndonesia BahasaIndonesia[]
+}
+
+model Bahasa {
+  id           String     @id @default(uuid())
+  kalimat      String
+  voice        String
+  idDaerah     String
+  idTipeBahasa Int
+  tipeBahasa   TipeBahasa @relation(fields: [idTipeBahasa], references: [id])
+  daerah       Daerah     @relation(fields: [idDaerah], references: [id])
+}
+
+model DaerahToDaerah {
+  id        String @id @default(uuid())
+  idBahasa1 String
+  idBahasa2 String
+}
+
+model BahasaIndonesia {
+  id           String     @id @default(uuid())
+  kalimat      String
+  voice        String
+  idTipeBahasa Int
+  tipeBahasa   TipeBahasa @relation(fields: [idTipeBahasa], references: [id])
+}
+
+model DaerahToIndonesia {
+  id                String @id @default(uuid())
+  idBahasaDaerah    String
+  idBahasaIndonesia String
+}
