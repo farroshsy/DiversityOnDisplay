@@ -15,7 +15,7 @@ export default function Footer() {
 						<p className="font-bold font-rFlex text-lg">Jamjiwa</p>
 					</div>
 
-					<p className="text-xs py-2">&copy; 2022 Jamjiwa. All rights reserved.</p>
+					<p className="text-xs py-2">&copy; 2023 Diversity on Display. All rights reserved.</p>
 				</div>
 
 				<div className="flex gap-2">

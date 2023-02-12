@@ -1,8 +1,8 @@
 import Image from "next/image";
-import image1 from "@assets/image/rectangle-155@2x.png";
-import image2 from "@assets/image/rectangle-165@2x.png";
-import image3 from "@assets/image/rectangle-175@2x.png";
-import image4 from "@assets/image/rectangle-18@2x.png";
+import image1 from "@assets/image/Image1New.png";
+import image2 from "@assets/image/Image2.jpg";
+import image3 from "@assets/image/Image3.jpg";
+import image4 from "@assets/image/Image4.png";
 import { useCallback } from "react";
 import Link from "next/link";
 import { RxDoubleArrowDown } from "react-icons/rx";
@@ -20,7 +20,7 @@ export default function HomePage() {
 				<div className="flex items-center justify-center">
 					<b>The</b>
 					<b className="text-5xl text-gray-300">BEST</b>
-					<b>Jawa Timur dictionary to help you!</b>
+					<b>tools for exciting ideas around you!</b>
 				</div>
 				<div className="flex justify-center gap-7 my-8">
 					<Image className="rounded-2xl object-cover" width={348} height={234} alt="" src={image1} />
@@ -34,20 +34,20 @@ export default function HomePage() {
 			</div>
 			<div className="flex items-center justify-center gap-2 text-3xl">
 				<b>What’s Inside of</b>
-				<b className="text-5xl text-gray-300">JamJiwa</b>
+				<b className="text-5xl text-gray-300">Diversity on Display</b>
 				<b>?</b>
 			</div>
 
 			<div className="flex justify-center gap-5 ">
 				<Image width={450} className="rounded-2xl" alt="" src={image4} />
 				<div className="w-1/2">
-					<p className="font-bold text-3xl">Find Common Words!</p>
+					<p className="font-bold text-3xl">Find Projects Around You!</p>
 					<div className="text-xl space-y-4 mt-3">
-						<p>When you travel to a place in East Java, you must have experienced confusion about the general vocabulary that is there.</p>
-						<p>Moreover, a different accent from what you have will be more difficult to understand.</p>
+						<p>There are lots and lots of brilliant ideas and projects around you. The problem is, sometimes these projects are hidden and go unnoticed due to lack of resources and visibility.</p>
 						<p>
-							<span className="font-bold">JamJiwa</span> will be the answer to your problem!
+							<span className="font-bold">Diversity on Display</span> will be the answer to your problem!
 						</p>
+						<p>Our platform can connect you to brilliant and exciting ideas around you. Whether you’re looking to be involved directly, help funding to make it happen, or simply know more of what’s going on around you, out platform has got you covered.</p>
 					</div>
 				</div>
 			</div>
