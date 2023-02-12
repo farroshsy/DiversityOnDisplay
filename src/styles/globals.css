@@ -1,9 +1,131 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto+Flex:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,500;0,600;0,700;1,600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=R-Flex:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
+	@apply leading-[normal] m-0;
 	@apply text-white-100 bg-bgPrimary min-h-screen font-inter;
+}
+
+@keyframes pulsate {
+	0% {
+		transform: scale(1);
+		transform-origin: center center;
+		animation-timing-function: ease-out;
+	}
+
+	10% {
+		transform: scale(0.91);
+		animation-timing-function: ease-in;
+	}
+
+	17% {
+		transform: scale(0.98);
+		animation-timing-function: ease-out;
+	}
+
+	33% {
+		transform: scale(0.87);
+		animation-timing-function: ease-in;
+	}
+
+	45% {
+		transform: scale(1);
+		animation-timing-function: ease-out;
+	}
+}
+
+@keyframes bounce-top {
+	0% {
+		transform: translateY(-45px);
+		animation-timing-function: ease-in;
+		opacity: 1;
+	}
+
+	24% {
+		opacity: 1;
+	}
+
+	40% {
+		transform: translateY(-24px);
+		animation-timing-function: ease-in;
+	}
+
+	65% {
+		transform: translateY(-12px);
+		animation-timing-function: ease-in;
+	}
+
+	82% {
+		transform: translateY(-6px);
+		animation-timing-function: ease-in;
+	}
+
+	93% {
+		transform: translateY(-4px);
+		animation-timing-function: ease-in;
+	}
+
+	25%,
+	55%,
+	75%,
+	87% {
+		transform: translateY(0);
+		animation-timing-function: ease-out;
+	}
+
+	100% {
+		transform: translateY(0);
+		animation-timing-function: ease-out;
+		opacity: 1;
+	}
+}
+
+@keyframes slide-in-left {
+	0% {
+		transform: translateX(-200px);
+		opacity: 0;
+	}
+
+	100% {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+@keyframes wobble-hor-bottom {
+
+	0%,
+	100% {
+		transform: translateX(0%);
+		transform-origin: 50% 50%;
+	}
+
+	15% {
+		transform: translateX(-30px) rotate(-6deg);
+	}
+
+	30% {
+		transform: translateX(15px) rotate(6deg);
+	}
+
+	45% {
+		transform: translateX(-15px) rotate(-3.6deg);
+	}
+
+	60% {
+		transform: translateX(9px) rotate(2.4deg);
+	}
+
+	75% {
+		transform: translateX(-6px) rotate(-1.2deg);
+	}
 }
