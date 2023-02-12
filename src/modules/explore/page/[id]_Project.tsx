@@ -1,8 +1,6 @@
-/* eslint-disable @next/next/no-img-element */
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import Link from 'next/link';
 import axios from 'axios';
-
-const API_URL = 'https://hackathon-wehack-23.herokuapp.com/api/v1/projects/view/?region_code=AL';
 
 interface Project {
   id: number;
@@ -16,50 +14,38 @@ interface Project {
   funding_goal: number;
 }
 
-const ProjectsPage = () => {
-  const [projects, setProjects] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    const fetchProjects = async () => {
-      setLoading(true);
-      try {
-        const { data } = await axios.get(API_URL);
-        setProjects(data.data);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProjects();
-  }, []);
-
-  interface ProjectsData {
+interface ProjectsResponse {
   message: string;
   data: Project[];
 }
 
+const ProjectList: React.FC<{ projects: Project[] }> = ({ projects }) => {
   return (
-    <div className="container">
-      <h1>Projects</h1>
-      {loading && <p>Loading...</p>}
-      {projects.map(project => (
-        <div className="card" key={projects.data.id}>
-          <img src={project.image} alt={project.title} />
-          <h2>{project.title}</h2>
-          <p>Category: {project.category}</p>
-          <p>Region: {project.region_id}</p>
-          <p>Creator: {project.creator_name}</p>
-          <p>Description: {project.description}</p>
-          <p>Funding Goal: {project.funding_goal}</p>
-        </div>
+    <>
+      {projects.map((project) => (
+        <Link key={project.id} href="/projects/[id]" as={`/projects/${project.id}`}>
+          <div className="card">
+            <h3>{project.title}</h3>
+            <p>{project.description}</p>
+          </div>
+        </Link>
       ))}
-    </div>
+    </>
   );
 };
 
-export default ProjectsPage;
+const Projects: React.FC = () => {
+  const [projects, setProjects] = React.useState<Project[]>([]);
+
+  React.useEffect(() => {
+    axios
+      .get<ProjectsResponse>('https://hackathon-wehack-23.herokuapp.com/api/v1/projects/view/?region_code=AL')
+      .then((response) => {
+        setProjects(response.data.data);
+      });
+  }, []);
+
+  return <ProjectList projects={projects} />;
+};
+
+export default Projects;
