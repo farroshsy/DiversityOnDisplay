@@ -13,6 +13,7 @@
 body {
 	@apply leading-[normal] m-0;
 	@apply text-white-100 bg-bgPrimary min-h-screen font-inter;
+	
 }
 
 @keyframes pulsate {

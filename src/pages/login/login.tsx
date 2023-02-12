@@ -61,6 +61,9 @@ const LoginPage = () => {
       <button type="submit" className="bg-blue-600 rounded-xl text-sm md:min-w-[150px] md:min-h-[25px] text-center">
         <Link href='/'>Login</Link>
       </button>
+      <button type="submit" className="bg-blue-600 rounded-xl text-sm md:min-w-[150px] md:min-h-[25px] text-center">
+        <Link href='/register/register'>Register</Link>
+      </button>
       {error && <p>{error}</p>}
       {isLoading && <p>Loading...</p>}
     </form>
