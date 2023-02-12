@@ -24,9 +24,12 @@ export default function ExplorePage() {
         <div className="absolute top-[39px] left-[18px] w-[1276px] h-[690px]">
           <div className="absolute h-full w-full top-[0%] right-[0%] bottom-[0%] left-[0%]">
             <img
-              className="absolute h-[13.86%] w-[8.29%] top-[0.66%] right-[5.76%] bottom-[85.48%] left-[85.94%] max-w-full overflow-hidden max-h-full hover:animate-[10s_ease_0s_infinite_normal_both_pulsate] hover:opacity-[1] active:animate-[10s_ease-out_0s_infinite_reverse_both_bounce-top] active:opacity-[1]"
+              className="absolute h-[13.86%] w-[8.29%] top-[0.66%] right-[5.76%] bottom-[85.48%] left-[85.94%] 
+              max-w-full overflow-hidden max-h-full hover:animate-[10s_ease_0s_infinite_normal_both_pulsate] 
+              hover:opacity-[1] active:animate-[10s_ease-out_0s_infinite_reverse_both_bounce-top] active:opacity-[1]"
               alt=""
               src="map/nb.svg"
+              onClick={onNYClick}
             />
             <img
               className="absolute h-[17.69%] w-[7.79%] top-[0%] right-[0%] bottom-[82.31%] left-[92.21%] max-w-full overflow-hidden max-h-full hover:animate-[10s_ease_0s_infinite_normal_both_pulsate] hover:opacity-[1] active:animate-[10s_ease-out_0s_infinite_reverse_both_bounce-top] active:opacity-[1]"

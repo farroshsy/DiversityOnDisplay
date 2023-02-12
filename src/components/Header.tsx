@@ -30,7 +30,7 @@ export default function Header() {
 						<Link href="/explore">All Projects</Link>
 					</li>
 					<li className="py-3 px-4 bg-blue-600 rounded-xl text-sm md:min-w-[150px] text-center">
-						<Link href="/explore">Login</Link>
+						<Link href="/login">Login</Link>
 					</li>
 				</ul>
 				<ul className={`${expandNav ? "flex" : "hidden"} absolute flex-col gap-2 mx-auto top-12 left-0 right-0 px-7 drop-shadow-2xl pb-10 z-50 bg-bgPrimary`}>
