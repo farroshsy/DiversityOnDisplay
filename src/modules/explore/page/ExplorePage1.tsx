@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import type { NextPage } from "next";
 import { useCallback, useState, useEffect, SetStateAction } from "react";
 import { useRouter } from "next/router";
