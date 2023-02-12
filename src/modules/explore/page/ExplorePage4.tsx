@@ -1,8 +1,6 @@
-/* eslint-disable @next/next/no-img-element */
 import type { NextPage } from "next";
 import { useCallback, useState, useEffect, SetStateAction } from "react";
 import { useRouter } from "next/router";
-import Link from 'next/link';
 
 export default function ExplorePage() {
   const router = useRouter();
@@ -203,7 +201,6 @@ console.log(data);
               className="absolute h-[18.98%] w-[6.72%] top-[62.63%] right-[33%] bottom-[18.39%] left-[60.28%] max-w-full overflow-hidden max-h-full hover:animate-[10s_ease_0s_infinite_normal_both_pulsate] hover:opacity-[1] active:animate-[10s_ease-out_0s_infinite_reverse_both_bounce-top] active:opacity-[1]"
               alt=""
               src="map/al.svg"
-              onClick={() => router.push("/explore/[id]_Project.tsx")}
             />
             <img
               className="absolute h-[21.56%] w-[15.93%] top-[76.98%] right-[21.95%] bottom-[1.46%] left-[62.12%] max-w-full overflow-hidden max-h-full hover:animate-[10s_ease_0s_infinite_normal_both_pulsate] hover:opacity-[1] active:animate-[10s_ease-out_0s_infinite_reverse_both_bounce-top] active:opacity-[1]"

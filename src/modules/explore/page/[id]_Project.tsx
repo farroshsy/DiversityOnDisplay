@@ -1,55 +1,65 @@
-import Image from "next/image";
-import { useState } from "react";
-import image1 from "@assets/image/rectangle-15@2x.png";
-import image2 from "@assets/image/rectangle-16@2x.png";
-import image3 from "@assets/image/rectangle-17@2x.png";
-import { RxDoubleArrowDown } from "react-icons/rx";
-import ModalPopup from "../components/ModalPopup";
-import { useRouter } from "next/router";
-import { Kota } from "@prisma/client";
-import { mapImage } from "../components/mapImage";
+/* eslint-disable @next/next/no-img-element */
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-export default function ExplorePageDetail({ kota }: { kota: Kota[] }) {
-	const [openModal, setOpenModal] = useState(false);
-	const router = useRouter();
-	const { map } = router.query;
-	const imageMap = mapImage.find((item) => item.daerah === map?.toString().toLowerCase());
-	return (
-		<>
-			<div className="bg-gray-900 flex flex-col text-3xl">
-				<div className="mx-auto">
-					<div className="flex items-center justify-center">
-						<b>The</b>
-						<b className="text-5xl text-gray-300">BEST</b>
-						<b>Jawa Timur dictionary to help you!</b>
-					</div>
-				</div>
-				<div className="flex flex-row justify-center gap-4 my-8">
-					<Image width={348} height={234} className="rounded-2xl object-cover" alt="" src={image1} />
-					<Image width={348} height={234} className="rounded-2xl object-cover" alt="" src={image2} />
-					<Image width={348} height={234} className="rounded-2xl object-cover" alt="" src={image3} />
-				</div>
-				<div className="flex flex-row items-center justify-center gap-6">
-					<b>Welcome to</b>
-					<b className="text-5xl text-gray-300">{map?.toString().toUpperCase()}</b>
-				</div>
-				<div className="mx-auto">
-					<Image width={700} className="object-contain" alt="" src={imageMap!.image} />
-				</div>
-				<div className="flex gap-4 mx-auto w-[60%] flex-wrap justify-center">
-					{kota.map((item, index) => (
-						<div className="px-5 py-4 font-bold text-base bg-gray-800 rounded-lg" key={index}>
-							{item.nama}
-						</div>
-					))}
-				</div>
-				<div className="py-5" />
-				<div className="my-6 flex flex-col items-center cursor-pointer text-base text-gray-1500" onClick={() => setOpenModal(true)}>
-					<p>Scroll to have fun!</p>
-					<RxDoubleArrowDown size={48} />
-				</div>
-			</div>
-			<ModalPopup openModal={openModal} setOpenModal={setOpenModal} />
-		</>
-	);
+const API_URL = 'https://hackathon-wehack-23.herokuapp.com/api/v1/projects/view/?region_code=AL';
+
+interface Project {
+  id: number;
+  title: string;
+  category: string;
+  region_id: string;
+  region_code: string;
+  creator_name: string;
+  description: string;
+  image: string;
+  funding_goal: number;
 }
+
+const ProjectsPage = () => {
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      setLoading(true);
+      try {
+        const { data } = await axios.get(API_URL);
+        setProjects(data.data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
+  }, []);
+
+  interface ProjectsData {
+  message: string;
+  data: Project[];
+}
+
+  return (
+    <div className="container">
+      <h1>Projects</h1>
+      {loading && <p>Loading...</p>}
+      {projects.map(project => (
+        <div className="card" key={projects.data.id}>
+          <img src={project.image} alt={project.title} />
+          <h2>{project.title}</h2>
+          <p>Category: {project.category}</p>
+          <p>Region: {project.region_id}</p>
+          <p>Creator: {project.creator_name}</p>
+          <p>Description: {project.description}</p>
+          <p>Funding Goal: {project.funding_goal}</p>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default ProjectsPage;
